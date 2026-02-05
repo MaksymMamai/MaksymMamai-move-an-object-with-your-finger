@@ -53,3 +53,36 @@ public class Move2DObject : MonoBehaviour
         }
     }
 }
+
+
+public class Move2DObject2 : MonoBehaviour
+{
+        private void Start()
+        {
+            targetPosition = transform.position;
+            movementSpeed = 7f;
+        }
+    
+        private void SetTargetPosition()
+        {
+            
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+        
+            
+            if (Physics.Raycast(ray, out hit) && ConfirmThePlayerBall.isGrab)
+            {
+                targetPosition = hit.point;
+                //isMoving = true;
+            }
+        }
+        
+        private void MoveBall()
+        {
+            Vector3 newPosition = transform.position;
+        
+            newPosition.x = Mathf.MoveTowards(transform.position.x, targetPosition.x, movementSpeed * Time.deltaTime);
+        
+            transform.position = newPosition;
+        }
+}
