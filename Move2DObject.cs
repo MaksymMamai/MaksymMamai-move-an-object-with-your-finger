@@ -73,7 +73,6 @@ public class Move2DObject2 : MonoBehaviour
             if (Physics.Raycast(ray, out hit) && ConfirmThePlayerBall.isGrab)
             {
                 targetPosition = hit.point;
-                //isMoving = true;
             }
         }
         
